@@ -1,0 +1,1 @@
+Temporary connectivity probe created by OpenHands (designer task). Safe to delete: rm test-gems/probe.txt
