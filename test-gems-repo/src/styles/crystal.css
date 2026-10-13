@@ -1,0 +1,64 @@
+:root {
+  --crystal-float-dur: 6s;
+  --crystal-tilt-dur: 9s;
+  --crystal-shimmer-dur: 3.5s;
+}
+
+.crystal-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.crystal-float {
+  transform-origin: 100px 130px;
+  animation: crystal-float var(--crystal-float-dur) ease-in-out infinite alternate;
+}
+
+.crystal-tilt-a,
+.crystal-tilt-b,
+.crystal-tilt-c,
+.crystal-tilt-d {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.crystal-tilt-a { animation: crystal-tilt var(--crystal-tilt-dur) ease-in-out infinite alternate; }
+.crystal-tilt-b { animation: crystal-tilt var(--crystal-tilt-dur) ease-in-out infinite alternate-reverse; }
+.crystal-tilt-c { animation: crystal-facet-glow 4s ease-in-out infinite alternate; }
+.crystal-tilt-d { animation: crystal-facet-glow 4s ease-in-out infinite alternate-reverse; }
+
+.crystal-shimmer {
+  mix-blend-mode: overlay;
+  animation: crystal-shimmer var(--crystal-shimmer-dur) linear infinite alternate;
+}
+
+@keyframes crystal-float {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-14px) scale(1.04); }
+}
+
+@keyframes crystal-tilt {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to { transform: rotateX(14deg) rotateY(-14deg); }
+}
+
+@keyframes crystal-facet-glow {
+  from { opacity: 0.75; }
+  to { opacity: 1; }
+}
+
+@keyframes crystal-shimmer {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crystal-float,
+  .crystal-tilt-a,
+  .crystal-tilt-b,
+  .crystal-tilt-c,
+  .crystal-tilt-d,
+  .crystal-shimmer {
+    animation: none;
+  }
+}
